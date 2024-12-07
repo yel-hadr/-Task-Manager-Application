@@ -1,0 +1,29 @@
+version: '3'
+services:
+  frontend:
+    build: 
+      context: ./frontend
+    ports:
+      - "80:80"  # Host port 3000 maps to container port 80
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/taskmanager
+      - JWT_SECRET=mysecretkey
+    depends_on:
+      - mongodb
+      - redis
+
+  mongodb:
+    image: mongo
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    image: redis
+
+volumes:
+  mongodb_data:
