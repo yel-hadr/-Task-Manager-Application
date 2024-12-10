@@ -1,12 +1,12 @@
-version: '8'
+version: '3.8'
 services:
   frontend:
-    
     build:
       context: ./frontend
     ports:
       - "80:80"  # Host port 3000 maps to container port 80
-
+    volumes:
+      - ./frontend:/app
   backend:
     build:
       context: ./backend
@@ -24,9 +24,19 @@ services:
     image: mongo
     volumes:
       - mongodb_data:/data/db
+    tmpfs:
+      - /home/youssef/task-manager-app/db
 
   redis:
     image: redis
 
 volumes:
   mongodb_data:
+    driver: local
+  frontend:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/youssef/task-manager-app/frontend
+      o: bind
+

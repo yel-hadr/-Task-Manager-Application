@@ -59,35 +59,35 @@
 
 5. Authentication Implementation
 
- [ ] Create user registration endpoint
- [ ] Implement login functionality
- [ ] Generate JWT tokens
- [ ] Create authentication middleware
- [ ] Implement password hashing
- [ ] Add token validation and refresh mechanism
+ [x] Create user registration endpoint
+ [x] Implement login functionality
+ [x] Generate JWT tokens
+ [x] Create authentication middleware
+ [x] Implement password hashing
+ [x] Add token validation and refresh mechanism
 
 6. Task Management API
 
- [ ] Create CRUD endpoints for tasks
+ [x] Create CRUD endpoints for tasks
 
- [ ] Create task
- [ ] Read tasks (individual and list)
- [ ] Update task
- [ ] Delete task
+ [x] Create task
+ [x] Read tasks (individual and list)
+ [x] Update task
+ [x] Delete task
 
- [ ] Implement task filtering
- [ ] Add search functionality
- [ ] Create task status update endpoint
+ [x] Implement task filtering
+ [x] Add search functionality
+ [x] Create task status update endpoint
 
 7. Frontend Setup (React + Vite)
 
- [ ] Initialize Vite React project
- [ ] Install dependencies
+ [x] Initialize Vite React project
+ [x] Install dependencies
 
- [ ] React Router
- [ ] Axios
- [ ] React Hook Form
- [ ] TailwindCSS (optional)
+ [x] React Router
+ [x] Axios
+ [x] React Hook Form
+ [x] TailwindCSS (optional)
 
  [ ] Create component structure
 

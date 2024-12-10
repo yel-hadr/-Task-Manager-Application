@@ -1,18 +1,42 @@
 const express = require('express');
-const { getTasks } = require('../controllers/taskController');
-const cacheMiddleware = require('../middlewares/cache');
+const {
+  getTasks,
+  getTaskById, 
+  createTask,
+  deleteTask,
+  updateTask }= require('../controllers/taskController');
+const authenticate = require('../middlewares/authMiddleware')
+const cacheMiddleware = require('../middlewares/cashe')
 
 const router = express.Router();
 
+// Create a new task
+router.post('/', authenticate, createTask);
+
+// Get all tasks
 router.get(
   '/',
-  cacheMiddleware((req) => `tasks:${req.user.id}`), // Generate cache key dynamically
+  authenticate,
+  cacheMiddleware((req) => `tasks:${req.user.id}`),
   getTasks
 );
-router.get(
-    '/status/:status',
-    cacheMiddleware((req) => `tasks:status:${req.params.status}`),
-    getTasksByStatus
-  );
+
+// Get a single task by ID
+router.get('/:id', authenticate, 
+  cacheMiddleware((req) => `tasks:${req.user.id}`),
+  getTaskById);
+
+// Update a task
+router.put('/:id',
+  authenticate,
+  cacheMiddleware((req) => `tasks:${req.user.id}`),
+  updateTask);
+
+// Delete a task
+router.delete('/:id',
+  authenticate,
+  cacheMiddleware((req) => `tasks:${req.user.id}`),
+  deleteTask);
+
 
 module.exports = router;
